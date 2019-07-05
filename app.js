@@ -6,7 +6,7 @@ const mongoose = require('mongoose');
 
 // Our routes:
 const routeRoutes = require('./routes/route');
-// const userRoutes = require('./routes/user');
+const userRoutes = require('./routes/user');
 
 //initialize the app:
 const app = express();
@@ -37,6 +37,6 @@ app.use((req, res, next) => {
 
 // filtered the routes to have always '/api/routes' always.
 app.use('/api/routes', routeRoutes);
-// app.use('/api/user', userRoutes);
+app.use('/api/user', userRoutes);
 
 module.exports = app;

@@ -7,4 +7,4 @@ const routeSchema = mongoose.Schema({
 	destination: { type: String, required: true }
 });
 
-module.exports = mongoose.model('routeSchema', routeSchema);
+module.exports = mongoose.model('Route', routeSchema);
