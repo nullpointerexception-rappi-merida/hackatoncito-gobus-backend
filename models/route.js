@@ -5,10 +5,10 @@ const routeSchema = mongoose.Schema({
 	name: { type: String, required: true },
 	origin: { type: String, required: true },
 	destination: { type: String, required: true },
-	startpoint: { type: String, require: true },
-	endpoint: { type: String, require: true },
+	startpoint: { type: String, required: true },
+	endpoint: { type: String, required: true },
 	isActive: { type: Boolean, default: true },
-	busStops: { type: [Schema.Types.ObjectId], ref: 'BusStop' }
+	busStops: { type: [Schema.Types.ObjectId], ref: 'BusStop', required: true }
 });
 
 module.exports = mongoose.model('Route', routeSchema);
