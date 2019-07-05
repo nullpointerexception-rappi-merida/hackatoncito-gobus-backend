@@ -39,31 +39,28 @@ exports.createRoute = (req, res, next) => {
 		});
 };
 
-exports.getRoute = async (req, res, next) => {
-	//const {id, name, origin, destination, startpoint, endpoint} = req.query;
+exports.getRoutes = async (req, res, next) => {
 	const routes = await Route.find({ isActive: true })
-		.then(routes => {
-			res.status(200).json({
-				message: 'get all routes',
-				routes: routes
-			});
-
-		})
-		.catch(error => {
-			res.status(500).json({
-				message: 'get all routes failed'
-			});
-		});
+		.populate('BusStop');
+	res.status(200).json({
+		message: 'Routes retrieved successfully',
+		routes: routes
+	});
 
 };
 
-exports.getRouteById = async (req, res, next) => {
+exports.getRouteById = (req, res, next) => {
 
-	const route = await Route.findById(req.params.id)
-		.then(route => {
+	Route.findById(req.params.id)
+		// .populate('BusStop')
+		.then(async route => {
+			const busStops = await BusStop.find({ route: req.params.id });
 			res.status(200).json({
-				message: 'get the route',
-				route: route
+				message: 'Route retrieved successfully',
+				route: {
+					...route.toObject(),
+					busStops: busStops
+				}
 			});
 		})
 		.catch(error => {

@@ -8,7 +8,7 @@ const routeSchema = mongoose.Schema({
 	startpoint: { type: String, required: true },
 	endpoint: { type: String, required: true },
 	isActive: { type: Boolean, default: true },
-	busStops: { type: [Schema.Types.ObjectId], ref: 'BusStop', required: true }
+	busStops: { type: [Schema.Types.ObjectId], ref: 'BusStop' }
 });
 
 module.exports = mongoose.model('Route', routeSchema);
