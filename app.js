@@ -37,6 +37,6 @@ app.use((req, res, next) => {
 
 // filtered the routes to have always '/api/routes' always.
 app.use('/api/routes', routeRoutes);
-// app.use('/api/user', userRoutes);
+//app.use('/api/user', userRoutes);
 
 module.exports = app;
